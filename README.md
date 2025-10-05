@@ -14,7 +14,7 @@
 
 - make MicCamWatcher
 - ./MicCamWatcher
-- Launch Photo Booth, Factime, Zoom
+- Launch Photo Booth, Facetime, Zoom
 
 ### Logs
 

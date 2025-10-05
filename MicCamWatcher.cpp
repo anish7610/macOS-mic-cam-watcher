@@ -48,23 +48,11 @@ void monitorUsage(const std::unordered_set<std::string>& authorizedCameraApps,
             // 🔍 Camera Detected
             detectedApp = extractAppName(logEntry, false);
             std::cout << "📸 Camera in Use by: " << detectedApp << "\n";
-            if (authorizedCameraApps.find(detectedApp) == authorizedCameraApps.end()) {
-                std::cerr << "🚨 ALERT: Unauthorized camera access by " << detectedApp << "!\n";
-                std::string alertCmd = "osascript -e 'display notification \"Unauthorized Camera Access: " + detectedApp +
-                                       "\" with title \"Privacy Alert\"'";
-                system(alertCmd.c_str());
-            }
         } 
         else if (logEntry.find("coreaudiod") != std::string::npos || logEntry.find("powerd") != std::string::npos) {
             // 🎤 Microphone Detected (Includes powerd)
             detectedApp = extractAppName(logEntry, true);
             std::cout << "🎤 Microphone in Use by: " << detectedApp << "\n";
-            if (authorizedMicApps.find(detectedApp) == authorizedMicApps.end()) {
-                std::cerr << "🚨 ALERT: Unauthorized microphone access by " << detectedApp << "!\n";
-                std::string alertCmd = "osascript -e 'display notification \"Unauthorized Microphone Access: " + detectedApp +
-                                       "\" with title \"Privacy Alert\"'";
-                system(alertCmd.c_str());
-            }
         }
     }
 
